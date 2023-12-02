@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const port = proccess.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 function serveStaticFile(res, path, contentType, responseCode = 200) {
     fs.readFile(__dirname + path, (err, data) => {
@@ -36,4 +36,4 @@ const server = http.createServer((req, res) => {
 
 
 
-Server.listen(port, () => console.log(`server started on port ${port}; ` + 'press Ctrl-C to terminate....'))
+server.listen(port, () => console.log(`server started on port ${port}; ` + 'press Ctrl-C to terminate....'))
