@@ -1,5 +1,6 @@
 const http = require('http')
-const port = proccess.env.PORT((req, res) => {
+const port = proccess.env.PORT || 3000
+const server = http.createServer((req, res) => {
     const path = req.url.replace(/\/?(?:\?.*)?$/, '').toLowerCase()
     switch(path){
         case '':
@@ -17,4 +18,4 @@ const port = proccess.env.PORT((req, res) => {
     }
 })
 
-Server.listen(port, () => console.log(`server started on port ${port}; ` + 'press Ctrl-C to terminate....'))
+server.listen(port, () => console.log(`server started on port ${port}; ` + 'press Ctrl-C to terminate....'))
