@@ -8,7 +8,7 @@ function serveStaticFile(res, path, contentType, responseCode = 200) {
             res.writeHead(500, { 'Content-Type': 'text/plain' })
             return res.end('500 - Internal Error')
         }
-        res.writeHead(responseCode, { ' Content-Type ': contentType })
+        res.writeHead(responseCode, { 'Content-Type': contentType })
         res.end(data)
     })
 }
