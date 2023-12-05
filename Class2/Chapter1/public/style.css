@@ -3,12 +3,12 @@
  }
 
  header h1 {
-  color: white;
-  font-size: 45px;
+   color: white;
+   font-size: 45px;
  }
 
  header {
-   background-color: gray;
+   background-color: #303030;
    text-align: center;
    padding: 20px;
  }
@@ -25,38 +25,37 @@
  nav {
    display: block;
    background-color: gray;
-   
+
  }
 
  nav.navbar {
-  background-color: #333; /* Set background color for the navigation bar */
-  color: white; /* Set text color for navigation links */
-  padding: 10px; /* Adjust the padding as needed */
-  text-align: center;
-}
+   background-color: #696969;
+   /* Set background color for the navigation bar */
+   color: white;
+   /* Set text color for navigation links */
+   padding: 10px;
+   /* Adjust the padding as needed */
+   text-align: center;
+ }
 
-nav.navbar div {
-  display: inline-block;
-  margin: 0 10px; 
-}
+ nav.navbar div {
+   display: inline-block;
+   margin: 0 10px;
+ }
 
-ul.homenav, ul.aboutnav {
-  list-style: none;
-  text-decoration: none;
-  display: inline;
-  padding: 5px 10px;
-  cursor: pointer;
+ nav.navbar a {
+  text-decoration: none; /* Remove underline for anchor elements */
   color: white;
-  font-size: 18px;
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: gray ;
-  color: white;
-  text-align: center;
   font-size: 20px;
 }
+
+ .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #303030;
+   color: white;
+   text-align: center;
+   font-size: 20px;
+ }
