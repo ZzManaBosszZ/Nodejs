@@ -22,7 +22,7 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
-    console.log(err.message)
+    console.error(err.message)
     res.status(500)
     res.render('500')
 
