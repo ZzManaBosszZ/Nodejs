@@ -10,8 +10,8 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 const products = [
-        {name : 'Product 1', image: '/img/product1.jpeg'},
-        {name : 'Product 2', image: '/img/product2.jpeg'},
+    { name: 'Product 1', image: '/img/product1.jpeg' },
+    { name: 'Product 2', image: '/img/product2.jpeg' },
 ];
 
 app.get('/products', (req, res) => {
