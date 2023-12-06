@@ -14,7 +14,7 @@ const products = [
     { name: 'Product 2', image: '/img/product2.jpeg' },
 ];
 
-app.get('/products', (req, res) => {
+app.get('/', (req, res) => {
     res.render('products', { products });
 });
 
