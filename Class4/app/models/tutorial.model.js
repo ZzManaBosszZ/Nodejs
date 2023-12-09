@@ -43,18 +43,18 @@ Tutorial.getAll = (title, result) => {
   let query = "SELECT * FROM tutorials";
 
   if (title) {
-    query += ` WHERE title LIKE '%${title}%'`;
+      query += ` WHERE title LIKE '%${title}%'`;
   }
 
   sql.query(query, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
+      if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+      }
 
-    console.log("tutorials: ", res);
-    result(null, res);
+      console.log("tutorials: ", res);
+      result(null, res);
   });
 };
 
