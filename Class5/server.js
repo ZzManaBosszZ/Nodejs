@@ -19,8 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
+
 const db = require("./app/models");
-db.sequelize.sync()
+db.sequelize.sync({ force: false })
   .then(() => {
     console.log("Synced db.");
   })
