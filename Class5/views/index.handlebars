@@ -1,0 +1,24 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Call from Frontend</title>
+</head>
+<body>
+  <h1>API Response:</h1>
+  <div id="apiResponse"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('http://localhost:3000/api/publishers')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('apiResponse').innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>

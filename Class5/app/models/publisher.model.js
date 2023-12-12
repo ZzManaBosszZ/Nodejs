@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Publishers = sequelize.define("publisher", {
+    const Publishers = sequelize.define("publishers", {
       name: {
         type: Sequelize.STRING
       },
@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       address: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       }
     });
   
