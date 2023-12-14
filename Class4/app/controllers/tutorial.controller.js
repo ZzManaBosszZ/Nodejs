@@ -3,11 +3,11 @@ const Tutorial = require("../models/tutorial.model.js");
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-    }
+    // if (!req.body) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    // }
   
     // Create a Tutorial
     const tutorial = new Tutorial({
