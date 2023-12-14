@@ -33,8 +33,6 @@ require("./app/routes/tutorial.routes.js")(app);
 require("./app/routes/publisher.routes.js")(app);
 require("./app/routes/comment.routes.js")(app);
 
-
-app.get('/index', (req, res) => res.render('index'))
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
