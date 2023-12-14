@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function submitForm(e) {
+            e.preventDefault();
+            //var myform = document.getElementById("myform");
+            //var formData = new FormData(myform);
+
+            var title =  document.getElementById('title').value;
+            var description =  document.getElementById('description').value;
+            var published =  true;
+
+            const body = {
+                title : title,
+                description : description,
+                published : published
+            }
+
+            fetch("http://localhost:3000/api/tutorials", {
+                method: "POST",
+                body: JSON.stringify( body ),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("network returns error");
+                    }
+                    return response.json();
+                })
+                .then((resp) => {
+                    // let respdiv = document.createElement("pre");
+                    // respdiv.innerHTML = JSON.stringify(resp, null, 2);
+                    // myform.replaceWith(respdiv);
+                    console.log("resp from server ", resp);
+                })
+                .catch((error) => {
+                    // Handle error
+                    console.log("error ", error);
+                });
+        }
+
+
+
+    </script>
+</head>
+<body>
+
+<form id="myform">
+    <div >
+        <label for="title">Tutorial name</label>
+        <input type="text" name="title" id="title" placeholder="Tutorial name">
+    </div>
+    <div >
+        <label for="description">Tutorial description:</label>
+        <input type="text" name="description" id="description"  placeholder="Tutorial description">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<script>
+    var myform = document.getElementById("myform");
+    myform.addEventListener("submit", submitForm);
+</script>
+
+</body>
+</html>
