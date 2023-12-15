@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+
+        function loadTutorial() {
+            fetch("http://localhost:3000/api/tutorials")
+
+                // Converting received data to JSON
+                .then(response => response.json())
+                .then(json => {
+
+                    // Create a variable to store HTML
+                    let li = `<tr><th>ID</th><th>Title</th><th>Description</th><th>Action</th></tr>`;
+
+                    json.forEach(tutorial => {
+                        li += `<tr>
+        <td>${tutorial.id} </td>
+        <td>${tutorial.title} </td>
+        <td>${tutorial.description}</td>
+        <td><a href="javascript:void(0);" onclick="deleteTutorial(${tutorial.id})">Delete</a></td>
+    </tr>`;
+                    });
+
+                    // Display result
+                    document.getElementById("tutorials").innerHTML = li;
+                });
+        }
+
+        function deleteTutorial(id) {
+            fetch(`http://localhost:3000/api/tutorials/${id}`, {
+                method: "DELETE"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    loadTutorial(); // Refresh the tutorial list after deletion
+                })
+                .catch(error => {
+                    console.error("Error deleting tutorial:", error);
+                });
+        }
+
         function submitForm(e) {
             e.preventDefault();
-            //var myform = document.getElementById("myform");
-            //var formData = new FormData(myform);
 
-            var title =  document.getElementById('title').value;
-            var description =  document.getElementById('description').value;
-            var published =  true;
+            var title = document.getElementById('title').value;
+            var description = document.getElementById('description').value;
+            var published = true;
 
             const body = {
-                title : title,
-                description : description,
-                published : published
+                title: title,
+                description: description,
+                published: published
             }
 
             fetch("http://localhost:3000/api/tutorials", {
                 method: "POST",
-                body: JSON.stringify( body ),
+                body: JSON.stringify(body),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -34,9 +72,6 @@
                     return response.json();
                 })
                 .then((resp) => {
-                    // let respdiv = document.createElement("pre");
-                    // respdiv.innerHTML = JSON.stringify(resp, null, 2);
-                    // myform.replaceWith(respdiv);
                     console.log("resp from server ", resp);
                 })
                 .catch((error) => {
@@ -49,26 +84,32 @@
 
     </script>
 </head>
-<body>
 
-<form id="myform">
-    <div >
-        <label for="title">Tutorial name</label>
-        <input type="text" name="title" id="title" placeholder="Tutorial name">
+<body onload="loadTutorial()">
+
+    <form id="myform">
+        <div>
+            <label for="title">Tutorial name</label>
+            <input type="text" name="title" id="title" placeholder="Tutorial name">
+        </div>
+        <div>
+            <label for="description">Tutorial description:</label>
+            <input type="text" name="description" id="description" placeholder="Tutorial description">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     </div>
-    <div >
-        <label for="description">Tutorial description:</label>
-        <input type="text" name="description" id="description"  placeholder="Tutorial description">
+
+    <div>
+        <table border="1" id="tutorials"></table>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-
-<script>
-    var myform = document.getElementById("myform");
-    myform.addEventListener("submit", submitForm);
-</script>
+    <script>
+        var myform = document.getElementById("myform");
+        myform.addEventListener("submit", submitForm);
+    </script>
 
 </body>
+
 </html>
