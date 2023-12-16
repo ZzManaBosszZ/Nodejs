@@ -108,14 +108,14 @@ exports.delete = (req, res) => {
     });
   };
 
-// Delete all Tutorials from the database.
+// Delete all Products from the database.
 exports.deleteAll = (req, res) => {
     Product.removeAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all products."
+            err.message || "Some error occurred while removing all product."
         });
-      else res.send({ message: `All Product were deleted successfully!` });
+      else res.send({ message: `All Products were deleted successfully!` });
     });
   };

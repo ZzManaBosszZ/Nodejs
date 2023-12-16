@@ -18,8 +18,8 @@ Product.create = (newProduct, result) => {
             return;
         }
 
-        console.log("created productcollection: ", { id: res.insertId, ...newProduct });
-        result(null, { id: res.insertId, ...newProduct });
+        console.log("created productcollection: ", { ...newProduct });
+        result(null, {...newProduct });
     });
 };
 
@@ -44,8 +44,8 @@ Product.getAll = (ProductName, result) => {
 
 Product.updateByCode = (ProductCode, product, result) => {
     sql.query(
-        "UPDATE productcollection SET ProductName = ?, ProductDate = ?, ProductOriginPrice = ?, Quantity = ?, ProductStoreCode = ?, WHERE ProductCode = ?",
-        [product.ProductName, product.ProductDate, product.ProductOriginPrice, product.Quantity, product.ProductStoreCode, ProductCode],
+        "UPDATE productcollection SET ProductCode = ?, ProductName = ?, ProductDate = ?, ProductOriginPrice = ?, Quantity = ?, ProductStoreCode = ?, WHERE ProductCode = ?",
+        [product.ProductCode, product.ProductName, product.ProductDate, product.ProductOriginPrice, product.Quantity, product.ProductStoreCode, ProductCode],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -59,8 +59,8 @@ Product.updateByCode = (ProductCode, product, result) => {
                 return;
             }
 
-            console.log("updated product: ", { id: id, ...product });
-            result(null, { id: id, ...product });
+            console.log("updated product: ", {...product });
+            result(null, { ...product });
         }
     );
 };
